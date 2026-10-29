@@ -4,6 +4,15 @@
 if (document.readyState === 'loading') {
  await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, { once: true }));
 }
+const requiredControls=['connection','status','guestSearch','viewSeatAssignment','openGallery','photoFile','consent','submitBtn','createDrawingVideo'];
+const controlsReady=()=>requiredControls.every(id=>document.getElementById(id));
+if(!controlsReady()){
+ await new Promise(resolve=>{
+  const observer=new MutationObserver(()=>{if(controlsReady()){observer.disconnect();clearTimeout(timer);resolve()}});
+  observer.observe(document.documentElement,{childList:true,subtree:true});
+  const timer=setTimeout(()=>{observer.disconnect();console.error('[Snap & Seat] Timed out waiting for phone controls',{readyState:document.readyState,ids:[...document.querySelectorAll('[id]')].map(e=>e.id)});resolve()},10000);
+ });
+}
 
 const $=id=>document.getElementById(id)||document.querySelector(`[id="${CSS.escape(id)}"]`);
 const params=new URLSearchParams(location.search),hashParams=new URLSearchParams(location.hash.slice(1));
