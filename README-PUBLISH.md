@@ -1,13 +1,15 @@
-# Update the Snap & Seat GitHub Pages controller
+# Configure and publish the Snap & Seat guest controller
 
-Your repository already has the guest page files at its root. Replace only its existing `controller.js` with this folder's updated `controller.js`; leave `index.html`, `style.css`, and `config.js` in place. The updated script reads the event-scoped public Supabase URL/key from the QR link fragment, so the blank `config.js` template does not need secrets or project settings.
+The Snap-Seat repository already contains the guest page files. Only its root `config.js` needs the Supabase public settings. This project's `config.js` is prefilled with your Project URL and public publishable key; copy those two values into the existing GitHub `config.js` and commit to `main`.
 
-The ChatGPT GitHub connection is read-only, so make this one-file edit in your repository:
+Do not copy a Host PIN or Supabase service-role/secret key into GitHub. The publishable key is intended for browser use. The QR link also carries the public settings in its fragment, but setting `config.js` lets the controller work consistently with existing QR links.
 
-1. Open https://github.com/photoseatingchart/Snap-Seat/blob/main/controller.js.
-2. Choose the pencil/Edit control, select all, and replace the file with `phone-controller/controller.js` from the Snap & Seat project folder.
+The available GitHub connection is read-only, so make the one-file edit in the repository:
+
+1. Open https://github.com/photoseatingchart/Snap-Seat/blob/main/config.js.
+2. Choose Edit (pencil). Replace the blank URL and key with the contents shown in this project's `phone-controller/config.js`.
 3. Commit the change to `main`.
-4. Open **Settings → Pages**. Choose **Deploy from a branch**, `main`, and `/ (root)`, then save. The expected page is https://photoseatingchart.github.io/Snap-Seat/ .
-5. Wait for Pages to finish deploying and open the URL. If GitHub shows 404, the Pages source/deployment is not active yet.
+4. Open **Settings → Pages**. Choose **Deploy from a branch**, `main`, and `/ (root)`, then save.
+5. Wait for deployment and open https://photoseatingchart.github.io/Snap-Seat/ . During inspection the URL returned 404; this setting should publish the page.
 
-The QR's URL fragment carries the guest token and public publishable/anon key. Browsers do not send fragments as part of the GitHub Pages HTTP request. Never add the Host PIN or Supabase service-role/secret key to this repository.
+The host app and guest page connect through the Supabase `snap-seat` Edge Function and private Storage. They do not connect to the PC's localhost.
