@@ -1,4 +1,4 @@
-const $=id=>document.getElementById(id),params=new URLSearchParams(location.search),hashParams=new URLSearchParams(location.hash.slice(1)),sessionId=params.get('event')||'',guestToken=hashParams.get('token')||params.get('token')||'',cfg=window.SNAPSEAT_CONFIG||{};
+const $=id=>document.getElementById(id),params=new URLSearchParams(location.search),hashParams=new URLSearchParams(location.hash.slice(1)),sessionId=params.get('event')||'',guestToken=hashParams.get('token')||params.get('token')||'',staticCfg=window.SNAPSEAT_CONFIG||{},cfg={...staticCfg,supabaseUrl:hashParams.get('supabase')||staticCfg.supabaseUrl||'',anonKey:hashParams.get('key')||staticCfg.anonKey||''};
 let client=null,guests=[],selected=[],file=null,typingTimer=null,apiBusy=false,pendingTicket=null,uploaded=false;
 const connection=(label,state='wait')=>{$('#connection').className=`connection ${state}`;$('#connection span').textContent=label};
 const status=(message,state='')=>{$('#status').textContent=message;$('#status').className=`status ${state}`};

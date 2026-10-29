@@ -1,15 +1,13 @@
-# Snap & Seat phone controller
+# Update the Snap & Seat GitHub Pages controller
 
-Upload these files directly into the root of `photoseatingchart/Snap-Seat`:
+Your repository already has the guest page files at its root. Replace only its existing `controller.js` with this folder's updated `controller.js`; leave `index.html`, `style.css`, and `config.js` in place. The updated script reads the event-scoped public Supabase URL/key from the QR link fragment, so the blank `config.js` template does not need secrets or project settings.
 
-- `index.html`
-- `controller.js`
-- `style.css`
-- `config.js`
-- `config.example.js`
+The ChatGPT GitHub connection is read-only, so make this one-file edit in your repository:
 
-Before uploading, edit `config.js` with the Supabase Project URL and public anon/publishable key. Do not add the Supabase service-role/secret key or the PC Host PIN.
+1. Open https://github.com/photoseatingchart/Snap-Seat/blob/main/controller.js.
+2. Choose the pencil/Edit control, select all, and replace the file with `phone-controller/controller.js` from the Snap & Seat project folder.
+3. Commit the change to `main`.
+4. Open **Settings → Pages**. Choose **Deploy from a branch**, `main`, and `/ (root)`, then save. The expected page is https://photoseatingchart.github.io/Snap-Seat/ .
+5. Wait for Pages to finish deploying and open the URL. If GitHub shows 404, the Pages source/deployment is not active yet.
 
-In GitHub, commit the files to `main`, then open **Settings → Pages**, select **Deploy from a branch**, choose `main` and `/ (root)`, and save. The expected URL is `https://photoseatingchart.github.io/Snap-Seat/`.
-
-This page requires the Supabase project and `snap-seat` Edge Function. Without those, it will show a setup/connection error. It is not a local PC server tunnel; it reaches the host through Supabase HTTPS APIs and private object storage.
+The QR's URL fragment carries the guest token and public publishable/anon key. Browsers do not send fragments as part of the GitHub Pages HTTP request. Never add the Host PIN or Supabase service-role/secret key to this repository.
