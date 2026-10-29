@@ -5,3 +5,19 @@
 
 /* Phone controller rebuild: readable mobile layouts and accessible controls. */
 .shell{width:min(440px,100%);min-height:min(92vh,900px);max-height:96vh;overflow-y:auto;padding:22px 22px 18px}.portrait-choice{margin:12px 0;border:1px solid #e5e8df;border-radius:5px;padding:10px;display:grid;gap:8px}.portrait-choice legend{font-size:11px;color:#71806f}.portrait-choice label{font-size:11px;color:#566654}.portrait-choice small,.message-hint{font-size:9px;color:#92998e;line-height:1.5}.message-hint{display:block;margin-top:5px}.seat-map{min-height:110px}.lookup input{font-size:16px}.share button,.view-seat,.gallery-tools button,.match{min-height:42px;cursor:pointer}.connection{max-width:55%;text-align:right;line-height:1.35}.share>button:focus-visible,.match:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #7b956f;outline-offset:2px}@media(max-width:380px){body{padding:8px}.shell{padding:18px 15px}.wordmark{font-size:9px}.connection{font-size:9px}.shell h1{font-size:26px}}
+
+/* Keep generated portrait dimensions inside the phone card, even for 1K AI images. */
+html,body{max-width:100%;overflow-x:hidden}
+body{display:block;min-height:100svh;padding:12px}
+.shell{width:min(440px,100%);min-width:0;min-height:0;max-height:none;margin:0 auto;overflow:visible;padding:22px 22px 18px}
+.guest-step,.final-preview,.style-preview{min-width:0;max-width:100%;width:100%}
+.final-preview{margin:12px 0;overflow:hidden;border:1px solid #e3e8e0;border-radius:6px;background:#fbfaf6}
+.final-preview img{display:block;width:100%;max-width:100%;height:auto;max-height:70svh;object-fit:contain;margin:0 auto}
+.final-preview p{margin:0;padding:12px;overflow-wrap:anywhere;white-space:pre-wrap;font:italic 13px/1.5 Georgia,serif;color:#667261;text-align:center}
+.drawing-video{min-width:0;overflow:hidden}
+.drawing-video canvas{width:min(100%,260px);max-width:100%;height:auto;aspect-ratio:4/5;object-fit:contain}
+.style-preview{margin:12px 0;padding:10px;border:1px solid #e4e6dd;border-radius:6px;background:#fbfaf6;text-align:center;overflow:hidden}
+.style-preview>small{display:block;margin-bottom:8px;font-size:9px;letter-spacing:1.4px;font-weight:bold;color:#71806f}
+.style-preview img{display:block;width:min(100%,260px);max-height:42svh;object-fit:contain;margin:0 auto;border-radius:4px;background:#fff}
+.style-preview p{margin:8px 0 0;font-size:10px;line-height:1.4;color:#778174}
+@media(max-width:380px){body{padding:8px}.shell{padding:18px 14px}.final-preview img{max-height:65svh}.style-preview img{max-height:36svh}}
