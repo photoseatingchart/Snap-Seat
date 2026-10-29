@@ -1,3 +1,10 @@
+// The controller is hosted as a static GitHub Pages asset. Wait explicitly
+// for the markup before binding controls so a cache/order difference between
+// Pages and a browser cannot abort startup and leave "Connecting…" forever.
+if (document.readyState === 'loading') {
+ await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, { once: true }));
+}
+
 const $=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search),hashParams=new URLSearchParams(location.hash.slice(1));
 const sessionId=params.get('event')||'',guestToken=hashParams.get('token')||params.get('token')||'';
